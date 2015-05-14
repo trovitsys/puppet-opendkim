@@ -6,7 +6,7 @@
 2. [Module Description](#module-description)
 3. [Setup - The basics of getting started with opendkim](#setup)
     * [Beginning with opendkim](#beginning-with-opendkim)
-    * [Add domains to sign](#add-domains-to-sign)
+    * [Add domains for signing](#add-domains-for-signing)
     * [Add allowed hosts](#add-allowed-hosts)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -37,7 +37,7 @@ This includes the ability to configure and manage a range of different domain, a
 To install OpenDKIM with the default parameters
     include opendkim
 
-### Add domains to sign
+### Add domains for signing
 
     opendkim::domain{['example.com', 'example.org']:}
 
