@@ -16,7 +16,7 @@
 ## Overview
 Currently only supports CentOS, fork me to support more distributions.
 
-The opendkim module allows you to set up mail signing and manage DKIM services with minimal effort
+The opendkim module allows you to set up mail signing and manage DKIM services with minimal effort.
 
 ## Module Description
 
@@ -29,12 +29,13 @@ This includes the ability to configure and manage a range of different domain, a
 
 * configuration files and directories (created and written to) 
 * package/service/configuration files for OpenDKIM
-* signing domains
-* trusted hosts
+* signing domains list
+* trusted hosts list
 
 ### Beginning with opendkim
 
 To install OpenDKIM with the default parameters
+
     include opendkim
 
 ### Add domains for signing
@@ -50,7 +51,7 @@ To install OpenDKIM with the default parameters
 
 For example.
 There is internal ip 10.3.3.80 and external ip 203.0.113.100 on our mail-relay host with OpenDKIM.
-This host wants to sign all mails for domains example.com and example.org.
+This host signs all mails for domains example.com and example.org.
 
     # Postfix-relay
     class{ 'postfix::server':
@@ -75,7 +76,7 @@ This host wants to sign all mails for domains example.com and example.org.
     opendkim::domain{['example.com', 'example.org']:}
     opendkim::trusted{['10.0.0.0/8', '203.0.113.0/24']:}
 
-After puppet-run you need to copy contents of  /etc/opendkim/keys/example.com/relay-site.txt and then paste into corresponding DNS-zone as TXT.
+After puppet-run you need to copy contents of  /etc/opendkim/keys/example.com/relay-site.txt and paste into corresponding DNS-zone as TXT.
 Then repeat this action for example.org
 
 ## Reference
