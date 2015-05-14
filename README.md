@@ -75,7 +75,7 @@ This host wants to sign all mails for domains example.com and example.org.
     opendkim::domain{['example.com', 'example.org']:}
     opendkim::trusted{['10.0.0.0/8', '203.0.113.0/24']:}
 
-After puppet-run you need to copy contents of  /etc/opendkim/keys/example.com/relay-site.txt and then paste into corresponding DNS-zone as TXT
+After puppet-run you need to copy contents of  /etc/opendkim/keys/example.com/relay-site.txt and then paste into corresponding DNS-zone as TXT.
 Then repeat this action for example.org
 
 ## Reference
@@ -84,9 +84,9 @@ Puppetlabs are working on automating this section.
 
 ## Limitations
 
-This module is tested on CentOS 6
+This module is tested on CentOS 6.
 
 ## Development
 
-Fork me on github and make pull request
+Fork me on github and make pull request.
 
