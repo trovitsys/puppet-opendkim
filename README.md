@@ -3,11 +3,11 @@
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description][]
+2. [Module Description](#module-description)
 3. [Setup - The basics of getting started with opendkim](#setup)
-    * [Beginning with opendkim][]
-    * [Add domains to sign][]
-    * [Add allowed hosts][]
+    * [Beginning with opendkim](#beginning-with-opendkim)
+    * [Add domains to sign](#add-domains-to-sign)
+    * [Add allowed hosts](#add-allowed-hosts)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
