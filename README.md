@@ -14,7 +14,6 @@
 6. [Development - Guide for contributing to the module](#development)
 
 ## Overview
-Currently only supports CentOS, fork me to support more distributions.
 
 The opendkim module allows you to set up mail signing and manage DKIM services with minimal effort.
 
