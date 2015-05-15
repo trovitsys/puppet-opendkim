@@ -1,6 +1,6 @@
 {
   "name": "bi4o4ek-opendkim",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": "Vladimir Bykanov",
   "summary": "Configures OpenDKIM",
   "license": "Apache-2.0",
@@ -16,6 +16,6 @@
     "operatingsystem": "CentOS",
     "operatingsystemrelease": [ "5", "6", "7" ]
     }
-  ],
+  ]
 }
 
