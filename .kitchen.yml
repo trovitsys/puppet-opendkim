@@ -1,0 +1,20 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: puppet_apply
+  manifests_path: tests
+  modules_path: openkdim
+  require_chef_for_busser: false
+  manifest: init.pp
+
+platforms:
+  - name: centos-6.4
+  - name: centos-7
+
+suites:
+  - name: default
+
+verifier:
+  ruby_bindir: '/usr/bin'

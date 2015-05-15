@@ -1,0 +1,6 @@
+.kitchen/
+.kitchen.local.yml
+.tmp/
+modules/
+.librarian/
+Puppetfile.lock
