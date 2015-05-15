@@ -55,14 +55,14 @@ This host signs all mails for domains example.com and example.org.
 
     # Postfix-relay
     class{ 'postfix::server':
-        inet_interfaces => '10.3.3.80, localhost',
-        mynetworks => '10.0.0.0/8, 203.0.113.0/24',
+        inet_interfaces              => '10.3.3.80, localhost',
+        mynetworks                   => '10.0.0.0/8, 203.0.113.0/24',
         smtpd_recipient_restrictions => 'permit_mynetworks, reject_unauth_destination',
-        smtpd_client_restrictions => 'permit_mynetworks, reject',
-        mydestination => '$myhostname',
-        myhostname => 'relay-site.example.com',
-        smtpd_banner => 'Hello',
-        extra_main_parameters => {
+        smtpd_client_restrictions    => 'permit_mynetworks, reject',
+        mydestination                => '$myhostname',
+        myhostname                   => 'relay-site.example.com',
+        smtpd_banner                 => 'Hello',
+        extra_main_parameters        => {
             smtp_bind_address     => '203.0.113.100',
             smtpd_milters         => 'inet:127.0.0.1:8891',
             non_smtpd_milters     => '$smtpd_milters',
