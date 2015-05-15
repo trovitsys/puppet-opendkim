@@ -79,6 +79,7 @@ This host signs all mails for domains example.com and example.org.
 After puppet-run you need to copy contents of  /etc/opendkim/keys/example.com/relay-site.txt and paste into corresponding DNS-zone as TXT.
 Then repeat this action for example.org
 
+Puppet module for postfix is [thias/postfix](forge.puppetlabs.com/thias/postfix) v0.3.3
 ## Reference
 
 Puppetlabs are working on automating this section.
