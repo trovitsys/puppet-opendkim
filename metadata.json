@@ -1,12 +1,12 @@
 {
   "name": "bi4o4ek-opendkim",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "Vladimir Bykanov",
   "summary": "Configures OpenDKIM",
   "license": "Apache-2.0",
   "source": "https://github.com/bi4o4ek/puppet-opendkim",
-  "project_page": null,
-  "issues_url": null,
+  "project_page": "https://forge.puppetlabs.com/bi4o4ek/opendkim",
+  "issues_url": "https://github.com/bi4o4ek/puppet-opendkim/issues",
   "operatingsystem_support": [
     {
     "operatingsystem": "RedHat",
@@ -17,8 +17,5 @@
     "operatingsystemrelease": [ "5", "6", "7" ]
     }
   ],
-  "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
-  ]
 }
 
