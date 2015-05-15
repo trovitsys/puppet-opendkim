@@ -39,8 +39,8 @@ class opendkim (
     }
 
     service { $serviceName:
-        ensure => running,
-        enable => true,
+        ensure  => running,
+        enable  => true,
         require => Package[$packageName],
     }
 

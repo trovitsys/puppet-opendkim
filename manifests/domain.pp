@@ -13,14 +13,14 @@ define opendkim::domain (
     # $pathConf and $pathKeys must be without leading '/'.
     # For example, '/etc/opendkim/keys'
 
-    Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+    Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
     # Create directory for domain
     file { "${pathKeys}/${domain}":
-        ensure  => "directory",
+        ensure  => directory,
         owner   => $owner,
         group   => $group,
-        mode    => 755,
+        mode    => '0755',
         notify  => Service[$serviceName],
         require => Package[$packageName],
     }

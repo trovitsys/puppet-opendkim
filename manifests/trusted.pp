@@ -6,7 +6,7 @@ define opendkim::trusted (
     $serviceName  = 'opendkim',
 ) {
     # Add line into KeyTable
-    file_line { "${pathConf}/${TrustedHosts}_$host":
+    file_line { "${pathConf}/${TrustedHosts}_${host}":
         path    => "${pathConf}/${TrustedHosts}",
         line    => $host,
         notify  => Service[$serviceName],
