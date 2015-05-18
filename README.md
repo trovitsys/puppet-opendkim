@@ -13,6 +13,8 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
+[![Build Status](https://travis-ci.org/bi4o4ek/puppet-opendkim.svg?branch=master)](https://travis-ci.org/bi4o4ek/puppet-opendkim)
+
 ## Overview
 
 The opendkim module allows you to set up mail signing and manage DKIM services with minimal effort.
