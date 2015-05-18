@@ -12,6 +12,7 @@ gem 'beaker-rspec'
 gem "travis"
 gem "travis-lint"
 gem "puppet-blacksmith"
+gem "guard-rake"
 
 gem 'test-kitchen', '>= 1.4.0'
 gem 'kitchen-docker', '>= 2.1.0'
