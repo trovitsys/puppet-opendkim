@@ -4,3 +4,7 @@
 modules/
 .librarian/
 Puppetfile.lock
+pkg/
+Gemfile.lock
+.rspec_system/
+.bundle/
