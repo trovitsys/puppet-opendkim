@@ -33,6 +33,8 @@ class opendkim (
     $package_name         = 'opendkim',
     $service_name         = 'opendkim',
     $pathconf             = '/etc/opendkim',
+    $owner                = 'opendkim',
+    $group                = 'opendkim',
 ) {
 
     package { $package_name:
