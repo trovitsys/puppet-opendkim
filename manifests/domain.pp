@@ -30,7 +30,7 @@ define opendkim::domain (
 
     # Add line into KeyTable
     file_line { "${opendkim::pathconf}/${keytable}_${domain}":
-        path    => "${pathconf}/${keytable}",
+        path    => "${opendkim::pathconf}/${keytable}",
         line    => "${selector}._domainkey.${domain} ${domain}:${selector}:${pathkeys}/${domain}/${selector}.private",
         notify  => Service[$opendkim::service_name],
         require => Package[$opendkim::package_name],
@@ -38,7 +38,7 @@ define opendkim::domain (
 
     # Add line into SigningTable
     file_line { "${opendkim::pathconf}/${signing_table}_${domain}":
-        path    => "${pathconf}/${signing_table}",
+        path    => "${opendkim::pathconf}/${signing_table}",
         line    => "*@${domain} ${selector}._domainkey.${domain}",
         notify  => Service[$opendkim::service_name],
         require => Package[$opendkim::package_name],

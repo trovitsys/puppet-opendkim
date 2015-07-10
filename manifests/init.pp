@@ -45,6 +45,20 @@ class opendkim (
         require => Package[$package_name],
     }
 
+    case $::operatingsystem {
+      'Debian': {
+            # Debian doesn't ship this directory in its package
+            file { $pathconf:
+              ensure => directory,
+              owner  => 'root',
+              group  => 'root',
+              mode   => '0755',
+              before => Package[$package_name],
+            }
+      }
+      default: {}
+    }
+
     file {'/etc/opendkim.conf':
         ensure  => file,
         owner   => 'root',
