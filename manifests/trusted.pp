@@ -7,17 +7,15 @@ define opendkim::trusted (
     # this is a ugly hack. Need to fix with a complete
     # module refactor about how it manages trusted hosts and
     # any other dataset
-    $th_dir = { "${opendkim::pathconf}/${trusted_hosts}" => {
-                  ensure  => file,
-                  replace => false,
-                  owner   => 'root',
-                  group   => 'root',
-                  mode    => '0640',
-                  require => Package[$opendkim::package_name],
-      },
+    $th_dir = { 'ensure'  => 'file',
+                'replace' => 'false',
+                'owner'   => 'root',
+                'group'   => 'root',
+                'mode'    => '0640',
+                'require' => "Package[$opendkim::package_name]"
     }
-
-    ensure_resource($th_dir)
+    
+    ensure_resource( 'file', "${opendkim::pathconf}/${trusted_hosts}", $th_dir)
 
     # Add line into KeyTable
     file_line { "${opendkim::pathconf}/${trusted_hosts}_${host}":
