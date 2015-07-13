@@ -11,7 +11,7 @@ define opendkim::domain (
     Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
     # Create directory for domain
-    file { "${pathkeys}/${domain}":
+    file { [$pathkeys, "${pathkeys}/${domain}"]:
         ensure  => directory,
         owner   => $opendkim::owner,
         group   => $opendkim::group,
@@ -27,6 +27,30 @@ define opendkim::domain (
         notify  => Service[$opendkim::service_name],
         require => [ Package[$opendkim::package_name], File["${pathkeys}/${domain}"], ],
     }
+
+    # this is a ugly hack. Need to fix with a complete
+    # module refactor about how it manages trusted hosts and
+    # any other dataset
+    $kt_dir = { 'ensure'  => 'file',
+                'replace' => 'false',
+                'owner'   => 'root',
+                'group'   => 'root',
+                'mode'    => '0640',
+                'require' => "Package[$opendkim::package_name]"
+    }
+    
+    ensure_resource( 'file', "${opendkim::pathconf}/${keytable}", $kt_dir)
+
+    $st_dir = { 'ensure'  => 'file',
+                'replace' => 'false',
+                'owner'   => 'root',
+                'group'   => 'root',
+                'mode'    => '0640',
+                'require' => "Package[$opendkim::package_name]"
+    }
+    
+    ensure_resource( 'file', "${opendkim::pathconf}/${signing_table}", $st_dir)
+
 
     # Add line into KeyTable
     file_line { "${opendkim::pathconf}/${keytable}_${domain}":
