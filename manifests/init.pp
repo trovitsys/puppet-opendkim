@@ -57,6 +57,8 @@ class opendkim (
               mode   => '0755',
               before => Package[$package_name],
             }
+           # this package provides programs used by this module
+           package { 'opendkim-tools': }
       }
       default: {}
     }
