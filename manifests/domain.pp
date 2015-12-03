@@ -11,7 +11,7 @@ define opendkim::domain (
     Exec { path => [ '/bin/', '/sbin/' , '/usr/bin/', '/usr/sbin/' ] }
 
     # Create directory for domain
-    file { [$pathkeys, "${pathkeys}/${domain}"]:
+    $path_params = {
         ensure  => directory,
         owner   => $opendkim::owner,
         group   => $opendkim::group,
@@ -19,6 +19,8 @@ define opendkim::domain (
         notify  => Service[$opendkim::service_name],
         require => Package[$opendkim::package_name],
     }
+
+    ensure_resource('file', [$pathkeys, "${pathkeys}/${domain}"], $path_params)
 
     # Generate dkim-keys
     exec { "opendkim-genkey -D ${pathkeys}/${domain}/ -d ${domain} -s ${selector}":
@@ -38,7 +40,7 @@ define opendkim::domain (
                 'mode'    => '0640',
                 'require' => "Package[$opendkim::package_name]"
     }
-    
+
     ensure_resource( 'file', "${opendkim::pathconf}/${keytable}", $kt_dir)
 
     $st_dir = { 'ensure'  => 'file',
@@ -48,7 +50,7 @@ define opendkim::domain (
                 'mode'    => '0640',
                 'require' => "Package[$opendkim::package_name]"
     }
-    
+
     ensure_resource( 'file', "${opendkim::pathconf}/${signing_table}", $st_dir)
 
 
