@@ -23,11 +23,11 @@ define opendkim::domain (
 
     ensure_resource('file', [$pathkeys, "${pathkeys}/${domain}"], $path_params)
 
-    if (defined($private_key_content)) {
+    if ($private_key_content != undef) {
         file { "${pathkeys}/${domain}/${selector}.private":
             ensure  => file,
-            owner   => $user,
-            group   => 'root',
+            owner   => $opendkim::owner,
+            group   => $opendkim::group,
             mode    => '0600',
             content => $private_key_content;
         }
