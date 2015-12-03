@@ -4,6 +4,7 @@ define opendkim::domain (
     $pathkeys      = '/etc/opendkim/keys',
     $keytable      = 'KeyTable',
     $signing_table = 'SigningTable',
+    $private_key_content = undef,
 ) {
     # $pathConf and $pathKeys must be without trailing '/'.
     # For example, '/etc/opendkim/keys'
@@ -22,12 +23,22 @@ define opendkim::domain (
 
     ensure_resource('file', [$pathkeys, "${pathkeys}/${domain}"], $path_params)
 
-    # Generate dkim-keys
-    exec { "opendkim-genkey -D ${pathkeys}/${domain}/ -d ${domain} -s ${selector}":
-        unless  => "/usr/bin/test -f ${pathkeys}/${domain}/${selector}.private && /usr/bin/test -f ${pathkeys}/${domain}/${selector}.txt",
-        user    => $opendkim::owner,
-        notify  => Service[$opendkim::service_name],
-        require => [ Package[$opendkim::package_name], File["${pathkeys}/${domain}"], ],
+    if (defined($private_key_content)) {
+        file { "${pathkeys}/${domain}/${selector}.private":
+            ensure  => file,
+            owner   => $user,
+            group   => 'root',
+            mode    => '0600',
+            content => $private_key_content;
+        }
+    } else {
+        # Generate dkim-keys
+        exec { "opendkim-genkey -D ${pathkeys}/${domain}/ -d ${domain} -s ${selector}":
+            unless  => "/usr/bin/test -f ${pathkeys}/${domain}/${selector}.private && /usr/bin/test -f ${pathkeys}/${domain}/${selector}.txt",
+            user    => $opendkim::owner,
+            notify  => Service[$opendkim::service_name],
+            require => [ Package[$opendkim::package_name], File["${pathkeys}/${domain}"], ],
+        }
     }
 
     # this is a ugly hack. Need to fix with a complete
